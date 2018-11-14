@@ -117,3 +117,44 @@ console.log(courses[1].views);
 /** BRACKET NOTATION */
 courses[1]["updateViews"];
 console.log(courses[1]["views"]);
+
+/** CLOSURES example */
+/** - is a function inside of a function 
+ *    that relies on variables in the outside function
+ *    to work.
+ */
+function doSomeMath() {
+    // start of closure
+    var a = 5;
+    var b = 4;
+    
+    function multiply() {
+        var result = a * b;
+        return result;
+    }
+    return multiply;
+    // end of closure
+}
+var theResult = doSomeMath();
+console.log("the result:", theResult);
+console.log("the result:", theResult());
+
+/** another CLOSURE example */
+function giveMeEms(pixels) {
+    var baseValue = 16;
+
+    function doTheMath() {
+        return pixels/baseValue;
+    }
+    return doTheMath;
+}
+
+var smallSize = giveMeEms(12);
+var mediumSize = giveMeEms(18);
+var largeSize = giveMeEms(24);
+var xlSize = giveMeEms(32);
+
+console.log("small size", smallSize());
+console.log("medium size", mediumSize());
+console.log("large size", largeSize());
+console.log("xl size", xlSize());
